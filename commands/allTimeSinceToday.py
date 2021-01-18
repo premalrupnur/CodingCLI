@@ -13,7 +13,7 @@ def allTime(apikey):
         print(colored(e,'red'))
     data = response.json()
     spinner.stop()
-    if(not(response.status_code==200) and data['errors']==['Unauthorized.']):
+    if((response.status_code==401)):
         print(colored("Request Denied please enter correct API KEY",'red'))
     else:
         code_time = data['data']['text']
