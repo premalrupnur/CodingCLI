@@ -14,7 +14,7 @@ def language(apikey:str):
         print(colored(e,'red'))
     data = response.json()
     spinner.stop()
-    if(not(response.status_code==200) and data['errors']==['Unauthorized.']):
+    if((response.status_code==401)):
         print(colored("Request Denied please enter correct API KEY",'red'))
     else:
         language_data = data['data']['languages']
@@ -23,7 +23,7 @@ def language(apikey:str):
             l = (Name,Percentage,Time_used) = colored(dict['name'],'green'),colored(dict['text'],'blue'),colored(dict['percent'],'cyan')
             all_lang.append(list(l))
         spinner.stop()
-        print(tabulate(all_lang, headers=["Name","Percentage", "Time Used"]))
+        print(tabulate(all_lang, headers=["Name","Time Used", "Percentage"]))
 
 
     

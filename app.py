@@ -1,8 +1,8 @@
 import argparse
 import sys
 from commands import allTimeSinceToday
-from commands import codingGoals
-from commands import dashboard
+from commands import CodingGoals
+from commands import Dashboard
 from commands import languageData
 from termcolor import colored
 
@@ -14,6 +14,7 @@ def main():
     parser.add_argument('-k','--key',nargs=1,help='Enter your api key')
     parser.add_argument('-r','--remove',action='store_true',help='Removes your apikey')
     parser.add_argument('-g','--goals',action='store_true',help='Coding goals')
+    parser.add_argument('-d','--dashboard',action='store_true',help='Coding goals')
     args = parser.parse_args()
     print(colored('Welcome, Track your coding activities with CODINGCLI\n','magenta'))
     with open('API.txt',"r") as f:
@@ -26,7 +27,9 @@ def main():
         if(args.projects):
             project(api_key)
         if(args.goals):
-            Codingoals.goal(api_key)
+            CodingGoals.goal(api_key)
+        if(args.dashboard):
+            Dashboard.dashboard(api_key)
     if(api_key=='' and args.key):
         api_key = sys.argv[2]
         with open('API.txt',"w") as f:
