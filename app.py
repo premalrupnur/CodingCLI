@@ -2,9 +2,10 @@ import argparse
 import sys
 from commands import allTimeSinceToday
 from commands import CodingGoals
-from commands import Dashboard
 from commands import languageData
+from commands import projects
 from termcolor import colored
+
 
 def main():
     parser = argparse.ArgumentParser(prog='CodingCLI', usage='%(prog)s [options]',description='TO provide daily coding metrics')
@@ -25,7 +26,7 @@ def main():
         if(args.languages):
             languageData.language(api_key)
         if(args.projects):
-            project(api_key)
+            projects.project(api_key)
         if(args.goals):
             CodingGoals.goal(api_key)
         if(args.dashboard):
