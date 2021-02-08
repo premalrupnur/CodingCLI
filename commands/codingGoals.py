@@ -27,7 +27,7 @@ def goal(apikey: str):
                 colored(goal["range"]["end"], "blue"),
                 colored(goal["range_status_reason_short"], "magenta"),
             ]
-            if goal["range_status"] == "Success" or goal["range_status"] == "ignored":
+            if goal["range_status"] == "success" or goal["range_status"] == "ignored":
                 l.append(colored(goal["range_status"], "green"))
             else:
                 l.append(colored(goal["range_status"], "red"))

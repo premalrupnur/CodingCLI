@@ -1,0 +1,6 @@
+include *.md
+recursive-include commands/*.txt
+
+
+prune .git
+prune .github
