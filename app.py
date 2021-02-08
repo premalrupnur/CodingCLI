@@ -35,10 +35,12 @@ def main():
         api_key = sys.argv[2]
         with open('API.txt',"w") as f:
             f.write(api_key)
-        print('API KEY SAVED')
+        print(colored('API KEY SAVED','green'))
+    if(api_key=='' and len(sys.argv)!=1):
+        print(colored("Please provide the API key",'red'))
     if(args.remove):
         with open('API.txt',"w") as f:
             f.write('')
-        print('API KEY REMOVED')
+        print(colored('API KEY REMOVED','green'))
 if __name__ == "__main__":
     main()  
