@@ -13,7 +13,6 @@ def allTime(apikey):
     except Exception as e:
         print(colored(e, "red"))
     data = response.json()
-    print(data)
     spinner.stop()
     if response.status_code == 401:
         print(colored("Request Denied please enter correct API KEY", "red"))

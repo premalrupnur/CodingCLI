@@ -7,12 +7,12 @@ wakatime API
 ## Installation 
 To install CodingCLI run the following command in terminal 
 ```
-pip install codingCLI
+pip install CodingMetrics
 
 ```
 ## Usage 
 To know all the command line arguments supported by the CLI run following command :-
 ```
-codingCLI -h
+coding-cli -h
 
 ```
