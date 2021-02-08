@@ -1,4 +1,5 @@
 import argparse
+import os 
 import sys
 from commands import allTimeSinceToday
 from commands import CodingGoals
@@ -8,6 +9,7 @@ from termcolor import colored
 
 
 def main():
+    print(colored('Welcome, Track your coding activities with CODINGCLI\n','magenta'))
     parser = argparse.ArgumentParser(prog='CodingCLI', usage='%(prog)s [options]',description='TO provide daily coding metrics')
     parser.add_argument('-a','--all',action='store_true',help='Displays All time since today')
     parser.add_argument('-l','--languages',action='store_true',help="Weekly status for each language")
@@ -17,8 +19,9 @@ def main():
     parser.add_argument('-g','--goals',action='store_true',help='Coding goals')
     parser.add_argument('-d','--dashboard',action='store_true',help='Coding goals')
     args = parser.parse_args()
-    print(colored('Welcome, Track your coding activities with CODINGCLI\n','magenta'))
-    with open('API.txt',"r") as f:
+    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+    path = os.path.join(ROOT_DIR,'API.txt')
+    with open(f'{path}',"r") as f:
         api_key = f.read()
     if(len(api_key)!=0 and not(args.remove)):
         if(args.all):
@@ -33,13 +36,13 @@ def main():
             Dashboard.dashboard(api_key)
     if(api_key=='' and args.key):
         api_key = sys.argv[2]
-        with open('API.txt',"w") as f:
+        with open(f'{path}',"w") as f:
             f.write(api_key)
         print(colored('API KEY SAVED','green'))
     if(api_key=='' and len(sys.argv)!=1):
         print(colored("Please provide the API key",'red'))
-    if(args.remove):
-        with open('API.txt',"w") as f:
+    if(api_key!='' and args.remove):
+        with open(f'{path}',"w") as f:
             f.write('')
         print(colored('API KEY REMOVED','green'))
 if __name__ == "__main__":
